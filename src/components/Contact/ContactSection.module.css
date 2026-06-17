@@ -1,0 +1,241 @@
+.sectionContainer {
+  background: #FFBCCD;
+  padding: 120px 48px 80px;
+}
+
+.maxWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 111, 97, 0.1);
+  border: 1.5px solid rgba(255, 111, 97, 0.2);
+  border-radius: 50px;
+  padding: 8px 20px;
+  margin-bottom: 24px;
+}
+
+.badgeText {
+  font-family: var(--font-body, sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--coral, #FF6F61);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading, serif);
+  font-weight: 900;
+  font-size: clamp(36px, 4vw, 58px);
+  color: var(--chocolate, #2D1F1F);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.italicTitle {
+  color: var(--coral, #FF6F61);
+  font-style: italic;
+}
+
+.headerDescription {
+  font-family: var(--font-body, sans-serif);
+  font-size: 17px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.6;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.infoCardsRowGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.infoCardItem {
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px 32px;
+  box-shadow: 0 10px 35px rgba(45, 31, 31, 0.05);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(45, 31, 31, 0.04);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  box-sizing: border-box;
+}
+
+.cardAccentLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.accentCoral {
+  background: linear-gradient(to right, var(--coral, #FF6F61), #ffb5af);
+}
+
+.accentGolden {
+  background: linear-gradient(to right, var(--golden, #F5A623), #ffd47a);
+}
+
+.infoFlexBox {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.infoIcon {
+  font-size: 24px;
+  color: var(--coral, #FF6F61);
+  background: rgba(255, 111, 97, 0.08);
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoTextContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.infoCardTitle {
+  font-family: var(--font-heading, serif);
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--chocolate, #2D1F1F);
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+.infoCardLine {
+  font-family: var(--font-body, sans-serif);
+  font-size: 14px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.infoCardLine:last-child {
+  margin-bottom: 0;
+}
+
+.footerContainer {
+  background: #FFBCCD;
+  padding: 32px 48px;
+  border-top: 1px solid rgba(45, 31, 31, 0.06);
+}
+
+.footerWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.copyrightText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 14px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.byText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 14px;
+  color: var(--chocolate, #2D1F1F);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.authorName {
+  font-weight: 700;
+  color: var(--chocolate, #2D1F1F);
+}
+
+.floatingHeart {
+  color: var(--coral, #FF6F61);
+  display: inline-flex;
+  align-items: center;
+  animation: floatHeart 2.5s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.15);
+  }
+}
+
+@media (max-width: 1024px) {
+  .sectionContainer {
+    padding: 100px 32px 60px;
+  }
+  
+  .infoCardsRowGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionContainer {
+    padding: 80px 24px 40px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 56px;
+  }
+
+  .infoCardsRowGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .infoCardItem {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+
+  .footerContainer {
+    padding: 24px;
+  }
+
+  .footerWrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}

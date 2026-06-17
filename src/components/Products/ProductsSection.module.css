@@ -1,0 +1,382 @@
+.sectionContainer {
+background: #FFBCCD;  
+padding: 120px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundBlob {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,111,97,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.maxWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,111,97,0.1);
+  border: 1.5px solid rgba(255,111,97,0.2);
+  border-radius: 50px;
+  padding: 8px 20px;
+  margin-bottom: 24px;
+}
+
+.badgeText {
+  font-family: var(--font-body, sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--coral, #FF6F61);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading, serif);
+  font-weight: 900;
+  font-size: clamp(36px, 4vw, 58px);
+  color: var(--chocolate, #2D1F1F);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+}
+
+.italicTitle {
+  color: var(--coral, #FF6F61);
+  font-style: italic;
+}
+
+.headerDescription {
+  font-family: var(--font-body, sans-serif);
+  font-size: 15px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.55;
+  max-width: 340px;
+  line-height: 1.7;
+}
+
+/* Tab Layout Wrappers */
+.tabOuterWrapper {
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.tabSelectorRow {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.tabButton {
+  background: transparent;
+  border: 2px solid rgba(45,31,31,0.15);
+  border-radius: 50px;
+  padding: 12px 26px;
+  color: var(--chocolate, #2D1F1F);
+  font-family: var(--font-body, sans-serif);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tabActive {
+  background: var(--coral, #FF6F61);
+  border-color: var(--coral, #FF6F61);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255,111,97,0.35);
+}
+
+.scrollHintMobile {
+  display: none;
+}
+
+/* Feature Grid Content Cards */
+.featureCardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.imageCardPanel {
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productGraphic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.darkGradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.bottomImageCaption {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  right: 32px;
+  z-index: 5;
+}
+
+.captionTitleText {
+  font-family: var(--font-heading, serif);
+  font-weight: 800;
+  font-size: 36px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.detailsContentPanel {
+  background: #FFF8F2;
+  border-radius: 32px;
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(45,31,31,0.08);
+  box-shadow: 0 20px 60px rgba(45,31,31,0.08);
+}
+
+.detailsHeaderMeta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.productTag {
+  background: rgba(255,111,97,0.08);
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: 4px 14px;
+  font-family: var(--font-body, sans-serif);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.brandContextText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.5;
+}
+
+.productNameTitle {
+  font-family: var(--font-heading, serif);
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--chocolate, #2D1F1F);
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.productDescriptionText {
+  font-family: var(--font-body, sans-serif);
+  font-size: 16px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.7;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.ratingRowMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.starIconChar {
+  color: #F5A623;
+  font-size: 18px;
+}
+
+.ratingValueText {
+  font-family: var(--font-body, sans-serif);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--chocolate, #2D1F1F);
+}
+
+.metaRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.categoryBadge {
+  background: rgba(45,31,31,0.05);
+  color: var(--chocolate, #2D1F1F);
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.availableBadge {
+  color: #2e7d32;
+  font-family: var(--font-body, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pricingActionFooter {
+  padding-top: 24px;
+  border-top: 1px solid rgba(45,31,31,0.08);
+}
+
+.priceLabelMeta {
+  font-family: var(--font-body, sans-serif);
+  font-size: 12px;
+  color: var(--chocolate, #2D1F1F);
+  opacity: 0.65;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.priceNumericalValue {
+  font-family: var(--font-heading, serif);
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--chocolate, #2D1F1F);
+  line-height: 1;
+}
+
+/* Media Queries Optimization Layout Breakpoints */
+@media (max-width: 1024px) {
+  .sectionContainer {
+    padding: 80px 32px;
+  }
+
+  .featureCardGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .imageCardPanel {
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionContainer {
+    padding: 100px 24px 60px; /* Enhanced top padding prevents fixed navbar overlap on mobile devices */
+  }
+
+  .sectionHeader {
+    margin-bottom: 36px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .headerDescription {
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  /* Fixed Swipe Row */
+  .tabOuterWrapper {
+    margin-bottom: 32px;
+  }
+
+  .tabSelectorRow {
+    overflow-x: auto;
+    scrollbar-width: none; /* Hides horizontal bars on modern browser viewports */
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 12px;
+    gap: 10px;
+  }
+
+  .tabSelectorRow::-webkit-scrollbar {
+    display: none; /* Hides safari custom rendering layers */
+  }
+
+  .tabButton {
+    padding: 10px 20px;
+    font-size: 13px;
+    flex-shrink: 0; /* Prevents item compaction compression when sliding */
+  }
+
+  /* Swipe Assist Hint Bar */
+  .scrollHintMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+    opacity: 0.45;
+  }
+
+  .scrollLine {
+    height: 1px;
+    background: var(--chocolate, #2D1F1F);
+    flex: 1;
+    max-width: 40px;
+  }
+
+  .scrollText {
+    font-family: var(--font-body, sans-serif);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--chocolate, #2D1F1F);
+  }
+
+  .imageCardPanel {
+    min-height: 360px;
+    border-radius: 24px;
+  }
+
+  .captionTitleText {
+    font-size: 28px;
+  }
+
+  .detailsContentPanel {
+    padding: 36px 24px;
+    border-radius: 24px;
+  }
+
+  .productNameTitle {
+    font-size: 32px;
+  }
+}

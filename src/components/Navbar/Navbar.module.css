@@ -1,0 +1,311 @@
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background: #FFBCCD;
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.25); */
+
+  transition: all 0.3s ease;
+}
+
+.isScrolled {
+  background: #FFBCCD;
+  box-shadow: 0 8px 24px rgba(45,31,31,0.1);
+}
+
+.navMaxWrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.navFlexRow {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logoTitle {
+  font-size: 22px;
+  font-weight: 800;
+
+  color: #1a1a1a;
+
+  letter-spacing: -0.5px;
+}
+
+.logoSub {
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #5b5b5b;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-top: 4px;
+}
+
+.desktopLinks {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.linkItem {
+  background: transparent;
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #1a1a1a;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.linkItem:hover {
+  background: rgba(255, 111, 97, 0.12);
+  color: #ff6f61;
+}
+
+.activeLink {
+  background: #ff6f61;
+  color: white;
+
+  box-shadow: 0 8px 20px
+    rgba(255, 111, 97, 0.25);
+}
+
+.desktopActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.btnMenu {
+  background: transparent;
+
+  border: 2px solid #ff6f61;
+  color: #ff6f61;
+
+  padding: 11px 24px;
+}
+
+.btnMenu:hover {
+  background: #ff6f61;
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 24px rgba(255, 111, 97, 0.25);
+}
+
+.btnFranchise {
+  background: #2d1f1f;
+
+  border: none;
+  color: white;
+
+  padding: 11px 24px;
+
+  box-shadow: 0 8px 24px rgba(45, 31, 31, 0.25);
+}
+
+.btnFranchise:hover {
+  transform: translateY(-2px);
+
+  background: #463232;
+
+  box-shadow: 0 12px 32px rgba(45, 31, 31, 0.35);
+}
+
+/* Hamburger */
+
+.mobileToggleButton {
+  display: none;
+
+  background: transparent;
+  border: none;
+
+  width: 42px;
+  height: 42px;
+
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1200;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.burgerLine {
+  width: 24px;
+  height: 3px;
+
+  background: #2d1f1f;
+
+  border-radius: 999px;
+
+  margin: 3px 0;
+
+  transition: all 0.3s ease;
+}
+
+.lineTopOpen {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.lineMidOpen {
+  opacity: 0;
+}
+
+.lineBotOpen {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile Dropdown */
+
+.mobileDropdown {
+  display: none;
+
+  width: 100%;
+
+  background: #ffbccd;
+
+  overflow: hidden;
+
+  max-height: 0;
+
+  transition: max-height 0.35s ease;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdownOpen {
+  max-height: 600px;
+}
+
+.mobileLinksWrapper {
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLinkItem {
+  background: none;
+  border: none;
+
+  text-align: left;
+
+  padding: 16px 0;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  color: #1a1a1a;
+
+  cursor: pointer;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobileLinkItem:hover {
+  color: #ff6f61;
+}
+
+.mobileActionsWrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.mobileActionsWrapper .btn {
+  width: 100%;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .navMaxWrapper {
+    padding: 0 20px;
+  }
+
+  .navFlexRow {
+    height: 72px;
+  }
+
+  .desktopLinks,
+  .desktopActions {
+    display: none;
+  }
+
+  .mobileToggleButton {
+    display: flex;
+  }
+
+  .mobileDropdown {
+    display: block;
+  }
+
+  .logoTitle {
+    font-size: 18px;
+  }
+
+  .logoSub {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .mobileActive {
+  background: rgba(255, 111, 97, 0.1);
+
+  color: #ff6f61;
+
+  border-radius: 12px;
+
+  padding-left: 12px;
+
+  font-weight: 700;
+}
+}

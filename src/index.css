@@ -1,0 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FFBCCD;
+  overflow-x: hidden;
+}
+
+#root {
+  background: #FFBCCD;
+}

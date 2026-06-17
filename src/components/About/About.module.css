@@ -1,0 +1,457 @@
+.aboutContainer {
+  background: #FFBCCD;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blobTopRight {
+  top: -150px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 111, 97, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+.blobBottomLeft {
+  bottom: -120px;
+  left: -80px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(245, 166, 35, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.aboutMaxWrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.labelCenterWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  border: 1px solid rgba(255, 111, 97, 0.2);
+
+  backdrop-filter: blur(10px);
+}
+
+.badgeText {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff6f61;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =======================================
+   Brand Rows
+======================================= */
+
+.brandRowGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  align-items: center;
+
+  margin-bottom: 50px;
+}
+
+.brandRowGridReverse {
+  grid-template-columns: 1fr 320px;
+
+  margin-bottom: 60px;
+}
+
+.imageFlexBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brandLogoGraphic {
+  max-width: 100%;
+  object-fit: contain;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  padding: 20px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 35px rgba(45, 31, 31, 0.08);
+
+  transition: all 0.3s ease;
+}
+
+.brandLogoGraphic:hover {
+  transform: translateY(-5px);
+}
+
+/* Creamy Day Logo */
+.brandRowGrid:first-of-type .brandLogoGraphic {
+  width: 220px;
+}
+
+/* LOVE in Logo */
+.brandRowGridReverse .brandLogoGraphic {
+  width: 300px;
+}
+
+.textBlockColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandHeading {
+  font-size: 48px;
+  font-weight: 900;
+  color: #2d1f1f;
+  line-height: 1.1;
+
+  margin-bottom: 8px;
+}
+
+.brandTagline {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #ff6f61;
+
+  margin-bottom: 20px;
+}
+
+.brandParagraph {
+  font-size: 17px;
+  line-height: 1.8;
+
+  color: #2d1f1f;
+
+  margin-bottom: 16px;
+}
+
+.brandParagraph:last-child {
+  margin-bottom: 0;
+}
+
+.textOpacityReduce {
+  opacity: 0.85;
+}
+
+.boldTextEmphasis {
+  font-weight: 700;
+}
+
+.horizontalDividerLine {
+  width: 100%;
+  height: 1px;
+
+  background: rgba(45, 31, 31, 0.08);
+
+  margin: 20px 0 50px;
+}
+
+/* =======================================
+   Trust Cards
+======================================= */
+
+.trustGridContainer {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 24px;
+
+  background: rgba(255, 255, 255, 0.45);
+
+  backdrop-filter: blur(14px);
+
+  padding: 36px;
+
+  border-radius: 32px;
+
+  box-shadow:
+    0 15px 40px rgba(45, 31, 31, 0.08);
+}
+
+.trustCardItem {
+  padding: 16px;
+
+  border-radius: 20px;
+
+  transition: all 0.3s ease;
+}
+
+.trustCardItem:hover {
+  background: rgba(255, 255, 255, 0.35);
+
+  transform: translateY(-5px);
+}
+
+.cardBadgeLabel {
+  display: inline-block;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  color: #ff6f61;
+
+  background: rgba(255, 111, 97, 0.1);
+
+  padding: 5px 12px;
+
+  border-radius: 999px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 14px;
+}
+
+.cardTitleText {
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #2d1f1f;
+
+  margin-bottom: 10px;
+
+  line-height: 1.3;
+}
+
+.cardDescText {
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: rgba(45, 31, 31, 0.75);
+}
+
+/* =======================================
+   Tablet
+======================================= */
+
+@media (max-width: 1024px) {
+  .aboutContainer {
+    padding: 70px 32px;
+  }
+
+  .brandRowGrid {
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+  }
+
+  .brandRowGridReverse {
+    grid-template-columns: 1fr 260px;
+  }
+
+  .brandHeading {
+    font-size: 40px;
+  }
+
+  .brandParagraph {
+    font-size: 16px;
+  }
+
+  .trustGridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =======================================
+   Mobile Responsive
+======================================= */
+
+@media (max-width: 768px) {
+
+  .aboutContainer {
+    padding: 50px 20px;
+  }
+
+  .labelCenterWrapper {
+    margin-bottom: 40px;
+  }
+
+  .sectionBadge {
+    padding: 8px 18px;
+  }
+
+  .badgeText {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Brand Sections */
+
+  .brandRowGrid,
+  .brandRowGridReverse {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    text-align: center;
+
+    margin-bottom: 50px;
+  }
+
+  .textOrderMobile {
+    order: 2;
+  }
+
+  .imageFlexBox {
+    order: 1;
+  }
+
+  /* Logo sizes */
+
+  .brandRowGrid:first-of-type .brandLogoGraphic {
+    width: 160px;
+    padding: 16px;
+  }
+
+  .brandRowGridReverse .brandLogoGraphic {
+    width: 220px;
+    padding: 16px;
+  }
+
+  .brandHeading {
+    font-size: 34px;
+    margin-bottom: 6px;
+  }
+
+  .brandTagline {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .brandParagraph {
+    font-size: 15px;
+    line-height: 1.75;
+
+    margin-bottom: 14px;
+  }
+
+  .textOpacityReduce {
+    opacity: 0.9;
+  }
+
+  .horizontalDividerLine {
+    margin: 10px 0 40px;
+  }
+
+  /* Trust Cards */
+
+  .trustGridContainer {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    padding: 24px 18px;
+
+    border-radius: 24px;
+  }
+
+  .trustCardItem {
+    text-align: center;
+
+    align-items: center;
+
+    padding: 18px;
+  }
+
+  .cardBadgeLabel {
+    margin-bottom: 10px;
+
+    font-size: 10px;
+  }
+
+  .cardTitleText {
+    font-size: 17px;
+
+    margin-bottom: 8px;
+  }
+
+  .cardDescText {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  /* Reduce blobs on mobile */
+
+  .blobTopRight {
+    width: 350px;
+    height: 350px;
+
+    top: -100px;
+    right: -120px;
+  }
+
+  .blobBottomLeft {
+    width: 300px;
+    height: 300px;
+
+    bottom: -80px;
+    left: -100px;
+  }
+}
+
+
+/* Very Small Devices */
+
+@media (max-width: 480px) {
+
+  .aboutContainer {
+    padding: 40px 16px;
+  }
+
+  .brandHeading {
+    font-size: 30px;
+  }
+
+  .brandParagraph {
+    font-size: 14px;
+  }
+
+  .brandRowGrid:first-of-type .brandLogoGraphic {
+    width: 140px;
+  }
+
+  .brandRowGridReverse .brandLogoGraphic {
+    width: 200px;
+  }
+
+  .trustGridContainer {
+    padding: 20px 14px;
+  }
+
+}
