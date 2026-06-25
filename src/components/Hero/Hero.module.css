@@ -55,7 +55,7 @@
 }
 
 .badgeTextBold {
-  size: 12px;
+  font-size: 12px;
   font-weight: 700;
   color: #F0A500;
   letter-spacing: 2px;
@@ -78,8 +78,7 @@
   line-height: 0.95;
   letter-spacing: -2px;
   margin-bottom: 18px;
-  text-shadow:
-    0 2px 20px rgba(240,165,0,0.08);
+  text-shadow: 0 2px 20px rgba(240,165,0,0.08);
 }
 
 .heroTitleItalic {
@@ -128,17 +127,21 @@
   background: #F0A500;
   border: none;
   color: #2A1F1A;
-
-  box-shadow:
-    0 10px 25px rgba(240,165,0,0.18);
-
+  
+  /* REMOVED: Bright orange glowing light bloom filters */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  
   transition: all 0.3s ease;
 }
 
 .btnSolid:hover {
   background: #FFD166;
   transform: translateY(-2px);
+  
+  /* REMOVED: Intense orange scaling flare shadow overlay spreads */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); 
 }
+
 /* ================= STATS ================= */
 
 .statsContainer {
@@ -187,16 +190,15 @@
   width: 100%;
   max-width: 440px;
   height: 560px;
-  background: linear-gradient(
-  135deg,
-  #F0A500,
-  #FFD166
-);
+  background: linear-gradient(135deg, #F0A500, #FFD166);
   border-radius: 40px;
   overflow: hidden;
-  box-shadow:
-  0 40px 100px rgba(0,0,0,0.45),
-  0 0 60px rgba(240,165,0,0.15);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.45), 0 0 60px rgba(240,165,0,0.15);
+  transition: transform 0.4s ease;
+}
+
+.imageCard:hover {
+  transform: translateY(-8px);
 }
 
 .heroImage {
@@ -209,11 +211,7 @@
 .imageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(45, 31, 31, 0.15),
-    transparent
-  );
+  background: linear-gradient(to top, rgba(45, 31, 31, 0.15), transparent);
   pointer-events: none;
 }
 
@@ -230,14 +228,6 @@
   -webkit-backdrop-filter: blur(12px);
   padding: 16px 20px;
   border-radius: 18px;
-}
-
-.imageCard {
-  transition: transform 0.4s ease;
-}
-
-.imageCard:hover {
-  transform: translateY(-8px);
 }
 
 .captionTitle {
