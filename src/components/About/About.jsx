@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styles from "./About.module.css";
 import creamydayLogo from "../../assets/images/creamyday.png";
 import loveinLogo from "../../assets/images/lovein.png";
@@ -31,31 +32,49 @@ export function About() {
     },
   ];
 
+  // Shared scroll viewport configuration options
+  const scrollAnimateProps = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
   return (
     <section id="about" className={styles.aboutContainer}>
-      <div className={`${styles.blob} ${styles.blobTopRight}`} />
-      <div className={`${styles.blob} ${styles.blobBottomLeft}`} />
-
       <div className={styles.aboutMaxWrapper}>
         
-        <div className={styles.labelCenterWrapper}>
+        <motion.div 
+          className={styles.labelCenterWrapper}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className={styles.sectionBadge}>
             <span className={styles.badgeText}>About Our Brands</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Creamy Day */}
-        <div className={styles.brandRowGrid} id="creamyday">
-          <div className={styles.imageFlexBox}>
+        <div id="creamyday" className={styles.brandRowGrid}>
+          {/* Logo container placed as a direct child of the grid for desktop side-by-side splits */}
+          <motion.div 
+            className={`${styles.imageFlexBox} ${styles.creamyLogoMobile}`}
+            {...scrollAnimateProps}
+          >
             <img
               src={creamydayLogo}
               alt="Creamy Day Logo"
               className={styles.brandLogoGraphic}
               loading="lazy"
             />
-          </div>
+          </motion.div>
 
-          <div className={styles.textBlockColumn}>
+          <motion.div 
+            className={`${styles.textBlockColumn} ${styles.textOrderMobile}`}
+            {...scrollAnimateProps}
+          >
             <h2 className={styles.brandHeading}>Creamy Day</h2>
 
             <div className={styles.brandTagline}>
@@ -73,18 +92,18 @@ export function About() {
               Our mission is to transform everyday moments into memorable
               experiences through premium dessert products.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         <div className={styles.horizontalDividerLine} />
 
         {/* LOVE in */}
-        <div
-          id="lovein"
-          className={`${styles.brandRowGrid} ${styles.brandRowGridReverse}`}
-        >
-          <div
+        <div id="lovein" className={`${styles.brandRowGrid} ${styles.brandRowGridReverse}`}>
+          {/* Text block container comes first, placing it on the left side on desktop screens */}
+          <motion.div 
             className={`${styles.textBlockColumn} ${styles.textOrderMobile}`}
+            {...scrollAnimateProps}
+            transition={{ ...scrollAnimateProps.transition, delay: 0.1 }}
           >
             <h2 className={styles.brandHeading}>LOVE in</h2>
 
@@ -101,39 +120,44 @@ export function About() {
               dessert lovers.
             </p>
 
-            <p
-              className={`${styles.brandParagraph} ${styles.textOpacityReduce}`}
-            >
+            <p className={styles.brandParagraph}>
               Our menu features Softy Ice Creams, Thick Milkshakes, Sundaes,
               Fruit Desserts and Seasonal Specials made using carefully
               selected ingredients.
             </p>
 
-            <p
-              className={`${styles.brandParagraph} ${styles.textOpacityReduce}`}
-            >
+            <p className={styles.brandParagraph}>
               Built around a modern kiosk concept, LOVE in offers a welcoming
               destination where customers can enjoy premium treats at
               affordable prices.
             </p>
-          </div>
+          </motion.div>
 
-          <div className={styles.imageFlexBox}>
+          {/* Logo wrapper container comes second, placing it on the right side on desktop screens */}
+          <motion.div 
+            className={`${styles.imageFlexBox} ${styles.imageLastMobile}`}
+            {...scrollAnimateProps}
+            transition={{ ...scrollAnimateProps.transition, delay: 0.1 }}
+          >
             <img
               src={loveinLogo}
               alt="LOVE in Logo"
               className={styles.brandLogoGraphic}
               loading="lazy"
             />
-          </div>
+          </motion.div>
         </div>
 
-        {/* Trust Cards */}
+        {/* Trust Cards Grid */}
         <div className={styles.trustGridContainer}>
           {trustCards.map((card, idx) => (
-            <div
-              key={idx}
+            <motion.div 
+              key={idx} 
               className={styles.trustCardItem}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
             >
               <span className={styles.cardBadgeLabel}>
                 {card.badge}
@@ -146,7 +170,7 @@ export function About() {
               <p className={styles.cardDescText}>
                 {card.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 

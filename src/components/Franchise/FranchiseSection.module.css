@@ -1,50 +1,8 @@
 .sectionContainer {
-  background: #FFBCCD;
+  background: #2A1F1A; /* Updated to theme dark background */
   padding: 90px 48px;
   position: relative;
   overflow: hidden;
-}
-
-/* Decorative blobs */
-
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.blobTopRight {
-  top: -180px;
-  right: -180px;
-  width: 650px;
-  height: 650px;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 111, 97, 0.12) 0%,
-    transparent 70%
-  );
-}
-
-.blobBottomLeft {
-  bottom: -150px;
-  left: -150px;
-
-  width: 500px;
-  height: 500px;
-
-  background: radial-gradient(
-    circle,
-    rgba(245, 166, 35, 0.1) 0%,
-    transparent 70%
-  );
-}
-
-.maxWrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
 /* Header */
@@ -62,9 +20,9 @@
 
   border-radius: 999px;
 
-  background: rgba(255,255,255,0.35);
+  background: rgba(240, 165, 0, 0.08); /* Updated to translucent gold pill */
 
-  border: 1px solid rgba(255,111,97,0.25);
+  border: 1px solid rgba(240, 165, 0, 0.18);
 
   margin-bottom: 24px;
 }
@@ -76,7 +34,7 @@
   letter-spacing: 3px;
   text-transform: uppercase;
 
-  color: #FF6F61;
+  color: #F0A500; /* Updated to brand golden-yellow */
 }
 
 .sectionTitle {
@@ -86,7 +44,7 @@
 
   font-weight: 900;
 
-  color: #2D1F1F;
+  color: #FFF8EC; /* Updated to readable light cream text */
 
   letter-spacing: -2px;
 
@@ -96,20 +54,20 @@
 }
 
 .italicTitle {
-  color: #FF6F61;
+  color: #F0A500; /* Updated to brand golden-yellow */
   font-style: italic;
 }
 
 .headerDescription {
-  max-width: 650px;
+  max-width: 620px;
+
+  font-size: 17px;
+
+  line-height: 1.85;
 
   margin: 0 auto;
 
-  font-size: 18px;
-
-  line-height: 1.8;
-
-  color: rgba(45,31,31,0.75);
+  color: rgba(255, 248, 236, 0.75); /* Updated to high-contrast body text */
 }
 
 /* Statistics Cards */
@@ -125,21 +83,24 @@
 }
 
 .statCardItem {
-  background: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.03); /* Updated to clean frosted glass overlay */
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  border: 1px solid rgba(240, 165, 0, 0.08);
 
   border-radius: 30px;
 
   padding: 36px 28px;
 
-  border: 1px solid rgba(255,255,255,0.4);
-
   box-shadow:
-    0 10px 30px rgba(45,31,31,0.06);
+      0 18px 45px rgba(0, 0, 0, 0.25); /* Adjusted drop shadow depth */
 
-  transition: all 0.3s ease;
+  transition:
+      transform .35s ease,
+      box-shadow .35s ease,
+      border-color .35s ease;
 
   position: relative;
 
@@ -147,10 +108,17 @@
 }
 
 .statCardItem:hover {
-  transform: translateY(-10px);
+
+  transform:
+    translateY(-12px)
+    scale(1.02);
+
+  border-color:
+    rgba(240, 165, 0, 0.28); /* Updated to gold active glow border */
 
   box-shadow:
-    0 20px 50px rgba(45,31,31,0.12);
+    0 30px 70px rgba(0, 0, 0, 0.35);
+
 }
 
 .cardAccentLine {
@@ -166,22 +134,23 @@
 .accentCoral {
   background: linear-gradient(
     to right,
-    #FF6F61,
-    #ffb5af
-  );
+    #F0A500,
+    #ffd47a
+  ); /* Map warm yellow gradients across accent line panels */
 }
 
 .accentGolden {
   background: linear-gradient(
     to right,
-    #F5A623,
-    #ffd47a
+    #FFD166,
+    #ffebd1
   );
 }
 
 /* Icons */
 
 .statIcon {
+
   width: 68px;
   height: 68px;
 
@@ -194,16 +163,31 @@
   font-size: 28px;
 
   margin-bottom: 22px;
+
+  position: relative;
+
+  transition: .35s;
+
+}
+
+/* REMOVED: Glowing shadow blur layer background elements (.statIcon::after) */
+
+.statCardItem:hover .statIcon {
+
+  transform:
+    scale(1.08)
+    rotate(-4deg);
+
 }
 
 .iconCoral {
-  background: rgba(255,111,97,0.12);
-  color: #FF6F61;
+  background: rgba(240, 165, 0, 0.12); /* Standardized internal panel iconography profiles */
+  color: #F0A500;
 }
 
 .iconGolden {
-  background: rgba(245,166,35,0.12);
-  color: #F5A623;
+  background: rgba(255, 209, 102, 0.12);
+  color: #FFD166;
 }
 
 .statCardTitle {
@@ -215,7 +199,7 @@
 
   text-transform: uppercase;
 
-  color: #FF6F61;
+  color: #F0A500; /* Map back to clear yellow tags */
 
   margin-bottom: 12px;
 }
@@ -227,7 +211,7 @@
 
   font-weight: 900;
 
-  color: #2D1F1F;
+  color: #FFF8EC; /* Switch reading numeric metrics to cream white */
 
   margin-bottom: 8px;
 
@@ -239,7 +223,7 @@
 
   font-weight: 600;
 
-  color: #FF6F61;
+  color: #F0A500;
 
   margin-bottom: 18px;
 }
@@ -249,16 +233,18 @@
 
   line-height: 1.8;
 
-  color: rgba(45,31,31,0.7);
+  color: rgba(255, 248, 236, 0.7);
 }
 
 /* Process Box */
 
 .processBoxWrapper {
-  background: rgba(255,255,255,0.55);
+  background: rgba(255, 255, 255, 0.03); /* Synchronized frosted template box overlay panels */
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(240, 165, 0, 0.08);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 
   border-radius: 36px;
 
@@ -267,7 +253,7 @@
   margin-bottom: 50px;
 
   box-shadow:
-    0 15px 50px rgba(45,31,31,0.08);
+    0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .processBoxHeader {
@@ -279,11 +265,11 @@
 .processTitle {
   font-family: var(--font-heading, serif);
 
-  font-size: 34px;
+  font-size: 38px;
 
   font-weight: 800;
 
-  color: #2D1F1F;
+  color: #FFF8EC;
 }
 
 /* Timeline */
@@ -308,7 +294,7 @@
 
   height: 2px;
 
-  background: rgba(255,111,97,0.25);
+  background: rgba(240, 165, 0, 0.25); /* Updated tracking connector stroke paths */
 
   z-index: 1;
 }
@@ -333,15 +319,17 @@
 
   border-radius: 50%;
 
-  background: #FF6F61;
+  background: #F0A500; /* Solid gold numeric indicators */
 
-  color: white;
+  color: #2A1F1A; /* Inverted item dark text for contrast */
 
   font-size: 20px;
   font-weight: 800;
 
-  box-shadow:
-    0 10px 25px rgba(255,111,97,0.35);
+  /* REMOVED: Glowing shadow background filter effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+
+  transition: .35s;
 }
 
 .stepLabelText {
@@ -351,7 +339,7 @@
 
   font-weight: 700;
 
-  color: #2D1F1F;
+  color: #FFF8EC;
 
   margin-bottom: 10px;
 }
@@ -361,7 +349,16 @@
 
   line-height: 1.7;
 
-  color: rgba(45,31,31,0.7);
+  color: rgba(255, 248, 236, 0.7);
+}
+
+.stepItem:hover .stepBadgeNum {
+
+  transform: scale(1.1);
+
+  /* REMOVED: Intense golden glow on hover states */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+
 }
 
 /* CTA */
@@ -371,17 +368,24 @@
 }
 
 .franchiseBigBtn {
-  background: linear-gradient(
-    135deg,
-    #FF6F61,
-    #FF857A
-  );
 
-  color: white;
+  position: relative;
+
+  overflow: hidden;
+
+  background: linear-gradient(135deg,
+      #F0A500,
+      #FFD166); /* Map golden-yellow arrays to CTA push selectors */
+
+  color: #2A1F1A; /* Legible background text inversion mapping */
 
   border: none;
 
   border-radius: 999px;
+
+  width: 100%;
+
+  max-width: 420px;
 
   padding: 20px 60px;
 
@@ -390,21 +394,53 @@
 
   cursor: pointer;
 
-  box-shadow:
-    0 18px 40px rgba(255,111,97,0.35);
+  /* REMOVED: Intense glowing orange drop shadow profile */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
-  transition: all 0.3s ease;
+  transition: .35s;
+
 }
 
 .franchiseBigBtn:hover {
-  transform: translateY(-4px) scale(1.03);
 
-  box-shadow:
-    0 24px 55px rgba(255,111,97,0.45);
+  transform:
+    translateY(-6px)
+    scale(1.04);
+
+  /* REMOVED: Extra glowing background spill on active button hover styles */
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+
+}
+
+.franchiseBigBtn::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 60%;
+  height: 100%;
+
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent);
+
+  transition: .7s;
+
+}
+
+.franchiseBigBtn:hover::before {
+
+  left: 130%;
+
 }
 
 /* Tablet */
-
+/* Tablet Layout Changes */
 @media (max-width: 1200px) {
 
   .sectionContainer {
@@ -425,6 +461,7 @@
   }
 }
 
+/* Smartphone / Mobile Layout Changes */
 @media (max-width: 768px) {
 
   .sectionContainer {
@@ -457,7 +494,6 @@
   }
 
   /* Stats Cards */
-
   .statsCardGrid {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -497,7 +533,6 @@
   }
 
   /* Process Box */
-
   .processBoxWrapper {
     padding: 32px 20px;
     border-radius: 28px;
@@ -512,8 +547,7 @@
     font-size: 28px;
   }
 
-  /* Mobile Timeline */
-
+  /* Mobile Timeline Intersections */
   .processStepsGrid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -529,7 +563,7 @@
     text-align: left;
     gap: 18px;
     padding-bottom: 24px;
-    border-bottom: 1px solid rgba(45,31,31,0.08);
+    border-bottom: 1px solid rgba(240, 165, 0, 0.08); /* Fixed old theme separation stroke artifacts */
   }
 
   .stepItem:last-child {
@@ -540,11 +574,8 @@
   .stepBadgeNum {
     width: 54px;
     height: 54px;
-
     min-width: 54px;
-
     margin: 0;
-
     font-size: 18px;
   }
 
@@ -562,39 +593,23 @@
     line-height: 1.7;
   }
 
-  /* CTA */
-
+  /* CTA Push Triggers */
   .ctaActionBlock {
     width: 100%;
   }
 
   .franchiseBigBtn {
     width: 100%;
-
     padding: 18px 24px;
-
     font-size: 16px;
-
     border-radius: 999px;
   }
 
-  /* Decorative blobs */
-
-  .blobTopRight {
-    width: 350px;
-    height: 350px;
-    right: -180px;
-    top: -120px;
-  }
-
-  .blobBottomLeft {
-    width: 300px;
-    height: 300px;
-    left: -180px;
-    bottom: -120px;
-  }
+  /* Decorative Ambient Blobs */
+  
 }
 
+/* Very Small / Compact Device Form Profiles */
 @media (max-width: 480px) {
 
   .sectionContainer {

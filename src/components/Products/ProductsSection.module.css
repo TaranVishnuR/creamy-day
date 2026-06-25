@@ -1,19 +1,8 @@
 .sectionContainer {
-background: #FFBCCD;  
-padding: 120px 48px;
+  background: #2A1F1A;  
+  padding: 20px 48px;
   position: relative;
   overflow: hidden;
-}
-
-.backgroundBlob {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,111,97,0.05) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .maxWrapper {
@@ -34,8 +23,8 @@ padding: 120px 48px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,111,97,0.1);
-  border: 1.5px solid rgba(255,111,97,0.2);
+  background: rgba(240,165,0,.08);
+  border: 1px solid rgba(240,165,0,.18);
   border-radius: 50px;
   padding: 8px 20px;
   margin-bottom: 24px;
@@ -45,7 +34,7 @@ padding: 120px 48px;
   font-family: var(--font-body, sans-serif);
   font-weight: 700;
   font-size: 11px;
-  color: var(--coral, #FF6F61);
+  color: #F0A500;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -54,20 +43,20 @@ padding: 120px 48px;
   font-family: var(--font-heading, serif);
   font-weight: 900;
   font-size: clamp(36px, 4vw, 58px);
-  color: var(--chocolate, #2D1F1F);
+  color: #FFF8EC;
   letter-spacing: -1.5px;
   line-height: 1.1;
 }
 
 .italicTitle {
-  color: var(--coral, #FF6F61);
+  color: #F0A500;
   font-style: italic;
 }
 
 .headerDescription {
   font-family: var(--font-body, sans-serif);
   font-size: 15px;
-  color: var(--chocolate, #2D1F1F);
+  color: rgba(255,248,236,.75);
   opacity: 0.55;
   max-width: 340px;
   line-height: 1.7;
@@ -75,35 +64,55 @@ padding: 120px 48px;
 
 /* Tab Layout Wrappers */
 .tabOuterWrapper {
-  margin-bottom: 48px;
   width: 100%;
+  margin-bottom: 48px;
 }
 
 .tabSelectorRow {
   display: flex;
   gap: 12px;
-  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: center;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0;      /* extra room for hover */
+}
+
+.tabSelectorRow::-webkit-scrollbar {
+  display: none;
 }
 
 .tabButton {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(240,165,0,.20);
   background: transparent;
-  border: 2px solid rgba(45,31,31,0.15);
-  border-radius: 50px;
-  padding: 12px 26px;
-  color: var(--chocolate, #2D1F1F);
-  font-family: var(--font-body, sans-serif);
-  font-weight: 700;
+  color: rgba(255,248,236,.80);
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  transition:
+    background .25s,
+    color .25s,
+    border-color .25s,
+    box-shadow .25s;
+}
+
+.tabButton:hover {
+  border-color: #F0A500;
+  background: rgba(240,165,0,.08);
+  color: #FFF8EC;
 }
 
 .tabActive {
-  background: var(--coral, #FF6F61);
-  border-color: var(--coral, #FF6F61);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(255,111,97,0.35);
+  /* background: #F0A500;
+  color: #2A1F1A; */
+  border-color: #F0A500;
+  box-shadow: none;
 }
 
 .scrollHintMobile {
@@ -126,12 +135,27 @@ padding: 120px 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform .35s ease, box-shadow .35s ease; /* Improved hover transition */
+  will-change: transform; /* Smooth GPU Acceleration */
+}
+
+.imageCardPanel:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35);
+}
+
+/* Dynamic Hover Sizing on Cards */
+.imageCardPanel:hover .productGraphic {
+  transform: scale(1.04);
 }
 
 .productGraphic {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .6s ease; /* Smooth live scaling transition */
+  will-change: transform; /* Smooth GPU Acceleration */
+  animation: floatIceCream 5s ease-in-out infinite;
 }
 
 .darkGradientOverlay {
@@ -158,14 +182,15 @@ padding: 120px 48px;
 }
 
 .detailsContentPanel {
-  background: #FFF8F2;
+  background: rgba(255, 255, 255, .03); /* Clean frosted glass card design */
+  border: 1px solid rgba(240, 165, 0, .08);
   border-radius: 32px;
   padding: 56px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid rgba(45,31,31,0.08);
-  box-shadow: 0 20px 60px rgba(45,31,31,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  backdrop-filter: blur(14px);
 }
 
 .detailsHeaderMeta {
@@ -190,15 +215,15 @@ padding: 120px 48px;
 .brandContextText {
   font-family: var(--font-body, sans-serif);
   font-size: 13px;
-  color: var(--chocolate, #2D1F1F);
-  opacity: 0.5;
+  color: #FFF8EC;
+  opacity: .45;
 }
 
 .productNameTitle {
   font-family: var(--font-heading, serif);
   font-weight: 800;
   font-size: 40px;
-  color: var(--chocolate, #2D1F1F);
+  color: #FFF8EC;
   letter-spacing: -1px;
   margin-bottom: 20px;
   line-height: 1.1;
@@ -207,7 +232,7 @@ padding: 120px 48px;
 .productDescriptionText {
   font-family: var(--font-body, sans-serif);
   font-size: 16px;
-  color: var(--chocolate, #2D1F1F);
+  color: rgba(255,248,236,.75);
   opacity: 0.7;
   line-height: 1.8;
   margin-bottom: 24px;
@@ -229,7 +254,7 @@ padding: 120px 48px;
   font-family: var(--font-body, sans-serif);
   font-weight: 700;
   font-size: 15px;
-  color: var(--chocolate, #2D1F1F);
+  color: #FFF8EC;
 }
 
 .metaRow {
@@ -239,13 +264,14 @@ padding: 120px 48px;
 }
 
 .categoryBadge {
-  background: rgba(45,31,31,0.05);
-  color: var(--chocolate, #2D1F1F);
+  background: rgba(240,165,0,.08);
+  color: #F0A500;
+  border: 1px solid rgba(240,165,0,.18);
   padding: 6px 14px;
   border-radius: 12px;
   font-family: var(--font-body, sans-serif);
-  font-size: 13px;
   font-weight: 600;
+  font-size: 13px;
 }
 
 .availableBadge {
@@ -260,13 +286,13 @@ padding: 120px 48px;
 
 .pricingActionFooter {
   padding-top: 24px;
-  border-top: 1px solid rgba(45,31,31,0.08);
+  border-top: 1px solid rgba(240,165,0,.08);
 }
 
 .priceLabelMeta {
   font-family: var(--font-body, sans-serif);
   font-size: 12px;
-  color: var(--chocolate, #2D1F1F);
+  color: #FFF8EC;
   opacity: 0.65;
   margin-bottom: 4px;
   letter-spacing: 2px;
@@ -277,11 +303,25 @@ padding: 120px 48px;
   font-family: var(--font-heading, serif);
   font-weight: 800;
   font-size: 32px;
-  color: var(--chocolate, #2D1F1F);
+  color: #F0A500;
   line-height: 1;
 }
 
-/* Media Queries Optimization Layout Breakpoints */
+/* Premium Smoothed Floating Keyframe Path */
+@keyframes floatIceCream {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ==========================================================================
+   Media Queries Optimization Layout Breakpoints
+   ========================================================================== */
+
+/* Tablet Breakpoint Template Scope Only */
 @media (max-width: 1024px) {
   .sectionContainer {
     padding: 80px 32px;
@@ -297,46 +337,53 @@ padding: 120px 48px;
   }
 }
 
+/* Phone/Mobile Breakpoint Target Framework Scope Only */
 @media (max-width: 768px) {
+  /* Reduced section container pad bounding boxes by 50% */
   .sectionContainer {
-    padding: 100px 24px 60px; /* Enhanced top padding prevents fixed navbar overlap on mobile devices */
+    padding: 30px 20px 40px; /* Snugger top section padding */
   }
 
+  /* Compress the space below the master header block */
   .sectionHeader {
-    margin-bottom: 36px;
-    text-align: center;
-    justify-content: center;
+    margin-bottom: 20px !important; /* Brought products area up closer */
   }
 
+  /* Target the badge spacing directly */
+  .sectionBadge {
+    margin-bottom: 12px !important; /* Cut space between badge and title */
+  }
+
+  /* Target the heading spacing directly - MINIMIZED TO BRING DESCRIPTION UP */
+  .sectionTitle {
+    margin-bottom: 4px !important; /* Brought the description paragraph tightly up against the title */
+  }
+
+  /* Target the description text spacing directly */
   .headerDescription {
-    max-width: 100%;
-    margin-top: 8px;
+    margin-top: 0 !important;    /* Clears any top offset pushing away from title */
+    margin-bottom: 0 !important; /* Strips any trailing baseline push from the description */
   }
 
-  /* Fixed Swipe Row */
   .tabOuterWrapper {
-    margin-bottom: 32px;
+    margin-bottom: 16px; 
   }
 
   .tabSelectorRow {
-    overflow-x: auto;
-    scrollbar-width: none; /* Hides horizontal bars on modern browser viewports */
-    -webkit-overflow-scrolling: touch;
-    padding: 4px 0 12px;
     gap: 10px;
-  }
-
-  .tabSelectorRow::-webkit-scrollbar {
-    display: none; /* Hides safari custom rendering layers */
+    padding: 6px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
 
   .tabButton {
-    padding: 10px 20px;
+    min-width: max-content;
+    padding: 10px 18px;
     font-size: 13px;
-    flex-shrink: 0; /* Prevents item compaction compression when sliding */
   }
 
-  /* Swipe Assist Hint Bar */
+  /* Dark Theme Swipe Assist Hint Elements */
   .scrollHintMobile {
     display: flex;
     align-items: center;
@@ -348,7 +395,7 @@ padding: 120px 48px;
 
   .scrollLine {
     height: 1px;
-    background: var(--chocolate, #2D1F1F);
+    background: rgba(240,165,0,.25);
     flex: 1;
     max-width: 40px;
   }
@@ -359,7 +406,7 @@ padding: 120px 48px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--chocolate, #2D1F1F);
+    color: #F0A500;
   }
 
   .imageCardPanel {

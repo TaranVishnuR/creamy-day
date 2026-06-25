@@ -1,39 +1,8 @@
 .aboutContainer {
-  background: #FFBCCD;
+  background: #2A1F1A;
   padding: 80px 64px;
   position: relative;
   overflow: hidden;
-}
-
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.blobTopRight {
-  top: -150px;
-  right: -100px;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 111, 97, 0.12) 0%,
-    transparent 70%
-  );
-}
-
-.blobBottomLeft {
-  bottom: -120px;
-  left: -80px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(245, 166, 35, 0.08) 0%,
-    transparent 70%
-  );
 }
 
 .aboutMaxWrapper {
@@ -55,9 +24,8 @@
   padding: 10px 24px;
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.25);
-
-  border: 1px solid rgba(255, 111, 97, 0.2);
+  background: rgba(240,165,0,0.08);
+  border: 1px solid rgba(240,165,0,0.18);
 
   backdrop-filter: blur(10px);
 }
@@ -65,7 +33,7 @@
 .badgeText {
   font-size: 12px;
   font-weight: 700;
-  color: #ff6f61;
+  color: #F0A500;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -99,14 +67,14 @@
   max-width: 100%;
   object-fit: contain;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(240,165,0,0.06);
 
   padding: 20px;
 
   border-radius: 24px;
 
   box-shadow:
-    0 10px 35px rgba(45, 31, 31, 0.08);
+  0 20px 50px rgba(0,0,0,0.25);
 
   transition: all 0.3s ease;
 }
@@ -133,7 +101,7 @@
 .brandHeading {
   font-size: 48px;
   font-weight: 900;
-  color: #2d1f1f;
+  color: #FFF8EC;
   line-height: 1.1;
 
   margin-bottom: 8px;
@@ -144,7 +112,7 @@
   font-size: 20px;
   font-weight: 700;
 
-  color: #ff6f61;
+  color: #F0A500;
 
   margin-bottom: 20px;
 }
@@ -153,7 +121,7 @@
   font-size: 17px;
   line-height: 1.8;
 
-  color: #2d1f1f;
+  color: rgba(255,248,236,0.85);
 
   margin-bottom: 16px;
 }
@@ -174,7 +142,7 @@
   width: 100%;
   height: 1px;
 
-  background: rgba(45, 31, 31, 0.08);
+  background: rgba(255,209,102,0.12);
 
   margin: 20px 0 50px;
 }
@@ -185,21 +153,19 @@
 
 .trustGridContainer {
   display: grid;
-
   grid-template-columns: repeat(5, 1fr);
 
   gap: 24px;
 
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(240,165,0,0.05);
+
+  border: 1px solid rgba(240,165,0,0.08);
 
   backdrop-filter: blur(14px);
 
   padding: 36px;
 
   border-radius: 32px;
-
-  box-shadow:
-    0 15px 40px rgba(45, 31, 31, 0.08);
 }
 
 .trustCardItem {
@@ -224,9 +190,8 @@
 
   text-transform: uppercase;
 
-  color: #ff6f61;
-
-  background: rgba(255, 111, 97, 0.1);
+  color: #F0A500;
+  background: rgba(240,165,0,0.12);
 
   padding: 5px 12px;
 
@@ -241,7 +206,7 @@
   font-size: 18px;
   font-weight: 800;
 
-  color: #2d1f1f;
+  color: #FFF8EC;
 
   margin-bottom: 10px;
 
@@ -253,7 +218,13 @@
 
   line-height: 1.7;
 
-  color: rgba(45, 31, 31, 0.75);
+  color: rgba(255,248,236,0.7);
+}
+
+.brandLogoGraphic:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.35);
 }
 
 /* =======================================
@@ -294,11 +265,11 @@
 @media (max-width: 768px) {
 
   .aboutContainer {
-    padding: 50px 20px;
+    padding: 10px 20px 50px; /* Reduced top padding to tightly fit space below Hero */
   }
 
   .labelCenterWrapper {
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Snugger layout title margin profile adjustment */
   }
 
   .sectionBadge {
@@ -311,9 +282,9 @@
   }
 
   /* Brand Sections */
-
   .brandRowGrid,
   .brandRowGridReverse {
+    display: grid; /* Explicitly set to ensure grid 'order' applies properly */
     grid-template-columns: 1fr;
 
     gap: 28px;
@@ -323,41 +294,73 @@
     margin-bottom: 50px;
   }
 
-  .textOrderMobile {
-    order: 2;
+  /* --- Creamy Day Layout Restructuring --- */
+  .brandRowGrid {
+    /* Changes container behavior to place elements sequentially */
+    display: flex;
+    flex-direction: column;
   }
 
-  .imageFlexBox {
-    order: 1;
+  .textBlockColumn {
+    /* Allows inner content blocks to rearrange independently */
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Logo sizes */
-
-  .brandRowGrid:first-of-type .brandLogoGraphic {
-    width: 160px;
-    padding: 16px;
-  }
-
-  .brandRowGridReverse .brandLogoGraphic {
-    width: 220px;
-    padding: 16px;
-  }
-
+  /* Creamy Day & LOVE in Shared Layout Order Elements */
   .brandHeading {
+    order: 1; /* Heading stays at the very top */
     font-size: 34px;
     margin-bottom: 6px;
   }
 
   .brandTagline {
+    order: 2; /* Tagline sits directly under heading */
     font-size: 16px;
     margin-bottom: 16px;
   }
 
+  .creamyLogoMobile {
+    order: 3; /* Creamy Day Logo placed directly below the tagline */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Adds clean spacing before text */
+  }
+
   .brandParagraph {
+    order: 4; /* Paragraphs flow under the logo */
     font-size: 15px;
     line-height: 1.75;
-
     margin-bottom: 14px;
+  }
+
+
+  /* --- LOVE in Layout Restructuring --- */
+  .brandRowGridReverse {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .imageLastMobile {
+    order: 3; /* LOVE in Logo placed directly below the tagline */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px; /* Adds clean spacing before text */
+  }
+
+  /* Logo sizes - Standardized identically for both brands */
+  .brandRowGrid .brandLogoGraphic,
+  .brandRowGridReverse .brandLogoGraphic,
+  .brandRowGrid:first-of-type .brandLogoGraphic {
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
   }
 
   .textOpacityReduce {
@@ -407,31 +410,14 @@
   }
 
   /* Reduce blobs on mobile */
-
-  .blobTopRight {
-    width: 350px;
-    height: 350px;
-
-    top: -100px;
-    right: -120px;
-  }
-
-  .blobBottomLeft {
-    width: 300px;
-    height: 300px;
-
-    bottom: -80px;
-    left: -100px;
-  }
 }
-
 
 /* Very Small Devices */
 
 @media (max-width: 480px) {
 
   .aboutContainer {
-    padding: 40px 16px;
+    padding: 10px 16px 40px; /* Reduced top padding cleanly for ultra compact screens */
   }
 
   .brandHeading {

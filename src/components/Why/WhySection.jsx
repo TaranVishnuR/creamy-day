@@ -1,4 +1,5 @@
 import styles from "./WhySection.module.css";
+import { motion } from "framer-motion";
 import {
   FaCoins,
   FaIceCream,
@@ -34,11 +35,46 @@ export function WhySection() {
     }
   ];
 
+  const headerVariants = {
+    hidden: {
+      opacity: 0,
+      y: 40
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15,
+        duration: 0.7
+      }
+    })
+  };
+
   return (
     <section className={styles.whySection}>
       <div className={styles.whyMaxWrapper}>
 
-        <div className={styles.whyHeader}>
+        <motion.div
+          className={styles.whyHeader}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className={styles.whySectionBadge}>
             <span className={styles.badgeText}>
               Why Choose Us
@@ -56,15 +92,28 @@ export function WhySection() {
             We don't just make ice cream — we create
             memorable dessert experiences.
           </p>
-        </div>
+        </motion.div>
 
         <div className={styles.whyCardsGrid}>
           {cards.map((card, i) => (
-            <div key={i} className={styles.whyCardItem}>
-
-              
-
-              <div
+            <motion.div
+              key={i}
+              className={styles.whyCardItem}
+              custom={i}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <motion.div
+                whileHover={{
+                  rotate: 8,
+                  scale: 1.1
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300
+                }}
                 className={`${styles.iconContainer}
                 ${
                   i % 2 === 0
@@ -73,7 +122,7 @@ export function WhySection() {
                 }`}
               >
                 {card.icon}
-              </div>
+              </motion.div>
 
               <h3 className={styles.cardTitle}>
                 {card.title}
@@ -82,7 +131,7 @@ export function WhySection() {
               <p className={styles.cardDesc}>
                 {card.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 

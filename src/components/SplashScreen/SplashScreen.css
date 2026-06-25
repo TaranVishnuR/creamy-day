@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap");
+
+:root {
+  --gold: #f0a500;
+  --gold2: #ffd166;
+  --dark: #2a1f1a;
+}
+
+.splash-container {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: var(--dark);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  z-index: 9999;
+}
+
+.brand-wrapper {
+  position: relative;
+  width: 700px;
+  height: 700px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.ring1 {
+  width: 620px;
+  height: 620px;
+
+  border: 2px solid transparent;
+  border-top-color: var(--gold);
+  border-right-color: var(--gold);
+
+  animation: spin 7s linear infinite;
+}
+
+.ring2 {
+  width: 540px;
+  height: 540px;
+
+  border: 2px solid transparent;
+  border-left-color: var(--gold2);
+  border-bottom-color: var(--gold2);
+
+  animation: spinReverse 5s linear infinite;
+}
+
+.content {
+  text-align: center;
+}
+
+.content h1 {
+  font-family: "Pacifico", cursive;
+  color: var(--gold);
+
+  font-size: clamp(50px, 8vw, 80px);
+
+  animation: pop 1s ease;
+}
+
+.divider {
+  width: 220px;
+  height: 2px;
+
+  margin: 15px auto;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold2),
+    transparent
+  );
+}
+
+.content p {
+  color: var(--gold2);
+  letter-spacing: 4px;
+  font-size: 16px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-wrapper {
+    width: 95vw;
+    height: 95vw;
+  }
+
+  .ring1 {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .ring2 {
+    width: 78vw;
+    height: 78vw;
+  }
+
+  .content h1,
+  .brand-title {
+    font-size: 3rem; /* Creamy Day */
+  }
+
+  .content p,
+  .brand-tagline {
+    font-size: 0.7rem; /* Ice Cream • Cakes • Milkshakes */
+    letter-spacing: 2px;
+  }
+
+  .divider {
+    width: 180px;
+  }
+}

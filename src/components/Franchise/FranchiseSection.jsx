@@ -1,45 +1,41 @@
 import styles from "./FranchiseSection.module.css";
-
 import {
   FaRupeeSign,
   FaRulerCombined,
   FaChartLine,
   FaGraduationCap,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export function FranchiseSection() {
   const stats = [
     {
       icon: <FaRupeeSign />,
       title: "Investment Required",
-      value: "₹10–15L",
+      value: "₹5–10L",
       sub: "All-inclusive setup cost",
-      desc:
-        "Covers fit-out, equipment, initial inventory, branding and working capital reserves.",
+      desc: "Covers fit-out, equipment, initial inventory, branding and working capital reserves.",
     },
     {
       icon: <FaRulerCombined />,
       title: "Store Area Required",
-      value: "200–400",
+      value: "150–250",
       sub: "sq. ft. recommended",
-      desc:
-        "Flexible store formats from kiosk to café, adaptable to malls and standalone outlets.",
+      desc: "Flexible store formats from kiosk to café, adaptable to malls and standalone outlets.",
     },
     {
       icon: <FaChartLine />,
       title: "Expected ROI",
-      value: "18–24",
+      value: "12–28",
       sub: "months payback period",
-      desc:
-        "High demand and repeat customers ensure steady returns for franchise partners.",
+      desc: "High demand and repeat customers ensure steady returns for franchise partners.",
     },
     {
       icon: <FaGraduationCap />,
       title: "Support",
       value: "360°",
       sub: "end-to-end support",
-      desc:
-        "Training, operations manuals, marketing assistance and dedicated relationship managers.",
+      desc: "Training, operations manuals, marketing assistance and dedicated relationship managers.",
     },
   ];
 
@@ -72,8 +68,15 @@ export function FranchiseSection() {
       <div className={`${styles.blob} ${styles.blobBottomLeft}`} />
 
       <div className={styles.maxWrapper}>
+        
         {/* Header */}
-        <div className={styles.sectionHeader}>
+        <motion.div
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <div className={styles.sectionBadge}>
             <span className={styles.badgeText}>
               Franchise Opportunity
@@ -81,10 +84,7 @@ export function FranchiseSection() {
           </div>
 
           <h2 className={styles.sectionTitle}>
-            Grow With{" "}
-            <span className={styles.italicTitle}>
-              Love In
-            </span>
+            Grow With <span className={styles.italicTitle}>Love In</span>
           </h2>
 
           <p className={styles.headerDescription}>
@@ -92,19 +92,25 @@ export function FranchiseSection() {
             a business you're proud of. Love In provides
             everything you need to succeed.
           </p>
-        </div>
+        </motion.div>
 
         {/* Statistics Cards */}
         <div className={styles.statsCardGrid}>
           {stats.map((s, i) => (
-            <div key={s.title} className={styles.statCardItem}>
-              
-
+            <motion.div
+              key={s.title}
+              className={styles.statCardItem}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.55,
+                delay: i * 0.1,
+              }}
+              viewport={{ once: true }}
+            >
               <div
                 className={`${styles.statIcon} ${
-                  i % 2 === 0
-                    ? styles.iconCoral
-                    : styles.iconGolden
+                  i % 2 === 0 ? styles.iconCoral : styles.iconGolden
                 }`}
               >
                 {s.icon}
@@ -125,12 +131,18 @@ export function FranchiseSection() {
               <p className={styles.statDesc}>
                 {s.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Process Timeline */}
-        <div className={styles.processBoxWrapper}>
+        <motion.div
+          className={styles.processBoxWrapper}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <div className={styles.processBoxHeader}>
             <h3 className={styles.processTitle}>
               How To Get Started
@@ -140,38 +152,48 @@ export function FranchiseSection() {
           <div className={styles.processStepsGrid}>
             <div className={styles.connectingLine} />
 
-            {steps.map((step) => (
-              <div
+            {steps.map((step, i) => (
+              <motion.div
                 key={step.num}
                 className={styles.stepItem}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.45,
+                  delay: i * 0.12,
+                }}
+                viewport={{ once: true }}
               >
                 <div className={styles.stepBadgeNum}>
                   {step.num}
                 </div>
 
-              <div className={styles.stepContent}>
+                <div className={styles.stepContent}>
+                  <div className={styles.stepLabelText}>
+                    {step.label}
+                  </div>
 
-                <div className={styles.stepLabelText}>
-                  {step.label}
+                  <p className={styles.stepDescText}>
+                    {step.desc}
+                  </p>
                 </div>
-
-                <p className={styles.stepDescText}>
-                  {step.desc}
-                </p>
-              </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* CTA */}
-        <div className={styles.ctaActionBlock}>
+        <motion.div
+          className={styles.ctaActionBlock}
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <button
             className={styles.franchiseBigBtn}
             onClick={() => {
-              const contact =
-                document.getElementById("contact");
-
+              const contact = document.getElementById("contact");
               if (contact) {
                 contact.scrollIntoView({
                   behavior: "smooth",
@@ -181,7 +203,8 @@ export function FranchiseSection() {
           >
             Become A Franchise Partner
           </button>
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );

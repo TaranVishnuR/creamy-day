@@ -1,12 +1,18 @@
-html {
-  scroll-behavior: smooth;
+:root {
+  --dark: #2A1F1A;
+  --dark-light: #3E2B1E;
+
+  --gold: #F0A500;
+  --gold-light: #FFD166;
+
+  /* --cream: #FFF8EC; */
 }
 
-body {
-  background: #FFBCCD;
-  overflow-x: hidden;
-}
-
+html,
+body,
 #root {
-  background: #FFBCCD;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }

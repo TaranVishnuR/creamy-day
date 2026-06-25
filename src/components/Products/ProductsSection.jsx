@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./ProductsSection.module.css";
 
 import classicVanillaSoftieImg from "../../assets/images/classic_vanilla_softie.png";
-import strawberrySoftieImg from "../../assets/images/strawberry.png"; 
+import strawberrySoftieImg from "../../assets/images/strawberry.png";
 import chocolateSundaeImg from "../../assets/images/chocolate_sundae.png";
 import oreoShakeImg from "../../assets/images/oreo_shake.png";
 
@@ -18,7 +19,7 @@ const products = [
     price: "₹30",
     rating: 4.9,
     img: classicVanillaSoftieImg,
-    gradient: "linear-gradient(135deg, #F8E6D0 0%, #FFD9A8 100%)",
+    gradient: "linear-gradient(135deg,#F8E6D0 0%,#FFD9A8 100%)",
   },
   {
     id: 2,
@@ -31,20 +32,20 @@ const products = [
     price: "₹40",
     rating: 4.8,
     img: strawberrySoftieImg,
-    gradient: "linear-gradient(135deg, #FF6F61 0%, #FFB5AF 100%)",
+    gradient: "linear-gradient(135deg,#FF6F61 0%,#FFB5AF 100%)",
   },
   {
     id: 3,
     name: "Chocolate Sundae",
     category: "Sundae",
     tag: "Premium",
-    tagColor: "var(--chocolate, #2D1F1F)",
+    tagColor: "var(--chocolate,#2D1F1F)",
     availability: "Available Daily",
     desc: "Rich chocolate sundae topped with chocolate sauce and creamy softy. A perfect dessert choice for chocolate lovers.",
     price: "₹50",
     rating: 4.9,
     img: chocolateSundaeImg,
-    gradient: "linear-gradient(135deg, #2D1F1F 0%, #5A4038 100%)",
+    gradient: "linear-gradient(135deg,#2D1F1F 0%,#5A4038 100%)",
   },
   {
     id: 4,
@@ -57,7 +58,7 @@ const products = [
     price: "₹50",
     rating: 4.8,
     img: oreoShakeImg,
-    gradient: "linear-gradient(135deg, #3D2B1F 0%, #7B5C40 100%)",
+    gradient: "linear-gradient(135deg,#3D2B1F 0%,#7B5C40 100%)",
   },
 ];
 
@@ -65,92 +66,205 @@ export function ProductsSection() {
   const [active, setActive] = useState(0);
   const product = products[active];
 
+  // Premium bouncy spring physics setting configuration
+  const springConfig = {
+    type: "spring",
+    stiffness: 380,
+    damping: 30
+  };
+
   return (
-    <section id="products" className={styles.sectionContainer}>
+    <motion.section
+      id="products"
+      className={styles.sectionContainer}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7 }}
+    >
       <div className={styles.backgroundBlob}></div>
 
       <div className={styles.maxWrapper}>
-        <div className={styles.sectionHeader}>
+
+        <motion.div
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <div>
             <div className={styles.sectionBadge}>
-              <span className={styles.badgeText}>Signature Products</span>
+              <span className={styles.badgeText}>
+                Signature Products
+              </span>
             </div>
+
             <h2 className={styles.sectionTitle}>
-              Fall In Love With <br />
-              <span className={styles.italicTitle}>Every Flavour</span>
+              Fall In Love With
+              <br />
+              <span className={styles.italicTitle}>
+                Every Flavour
+              </span>
             </h2>
           </div>
+
           <p className={styles.headerDescription}>
-            Each recipe is developed by our in-house dessert chefs using premium
-            ingredients and crafted to create unforgettable moments.
+            Each recipe is developed by our in-house dessert chefs using
+            premium ingredients and crafted to create unforgettable moments.
           </p>
-        </div>
+        </motion.div>
 
         <div className={styles.tabOuterWrapper}>
           <div className={styles.tabSelectorRow}>
-            {products.map((p, i) => (
-              <button
-                key={p.id}
-                onClick={() => setActive(i)}
-                className={`${styles.tabButton} ${active === i ? styles.tabActive : ""}`}
-              >
-                {p.name}
-              </button>
-            ))}
+            {products.map((p, i) => {
+              const isActive = active === i;
+              return (
+                <button
+                  key={p.id}
+                  onClick={() => setActive(i)}
+                  className={`${styles.tabButton} ${isActive ? styles.tabActive : ""}`}
+                  style={{ position: "relative" }}
+                >
+                  {/* Shared Spring Layout Slide Pillar Layer */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeProductSectionTabIndicator"
+                      transition={springConfig}
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        backgroundColor: "#F0A500",
+                        borderRadius: "999px",
+                        zIndex: 0,
+                      }}
+                    />
+                  )}
+                  {/* Label Text Layer to handle color changes */}
+                  <motion.span
+                    animate={{ color: isActive ? "#2A1F1A" : "rgba(255,248,236,.80)" }}
+                    transition={{ duration: 0.2 }}
+                    style={{ position: "relative", zIndex: 1 }}
+                  >
+                    {p.name}
+                  </motion.span>
+                </button>
+              );
+            })}
           </div>
+
           <div className={styles.scrollHintMobile}>
             <span className={styles.scrollLine}></span>
-            <span className={styles.scrollText}>Swipe to explore full menu</span>
+            <span className={styles.scrollText}>
+              Swipe to explore full menu
+            </span>
             <span className={styles.scrollLine}></span>
           </div>
         </div>
 
-        <div key={product.id} className={styles.featureCardGrid}>
-          <div className={styles.imageCardPanel} style={{ background: product.gradient }}>
-            <img src={product.img} alt={product.name} className={styles.productGraphic} />
-            <div className={styles.darkGradientOverlay}></div>
-            <div className={styles.bottomImageCaption}>
-              <div className={styles.captionTitleText}>{product.name}</div>
-            </div>
-          </div>
+        <AnimatePresence mode="wait">
 
-          <div className={styles.detailsContentPanel}>
-            <div className={styles.detailsHeaderMeta}>
-              <span
-                className={styles.productTag}
-                style={{
-                  color: product.tagColor,
-                  borderColor: `${product.tagColor}33`,
-                }}
-              >
-                {product.tag}
-              </span>
-              <span className={styles.brandContextText}>· Love In</span>
-            </div>
+          <motion.div
+            key={product.id}
+            className={styles.featureCardGrid}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.45 }}
+          >
 
-            <h3 className={styles.productNameTitle}>{product.name}</h3>
-            <p className={styles.productDescriptionText}>{product.desc}</p>
+            <motion.div
+              className={styles.imageCardPanel}
+              style={{ background: product.gradient }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.img
+                src={product.img}
+                alt={product.name}
+                className={styles.productGraphic}
+                initial={{ scale: 0.9 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              />
 
-            <div className={styles.ratingRowMeta}>
-              <span className={styles.starIconChar}>★</span>
-              <span className={styles.ratingValueText}>{product.rating}</span>
-            </div>
+              <div className={styles.darkGradientOverlay}></div>
 
-            <div className={styles.metaRow}>
-              <span className={styles.categoryBadge}>{product.category}</span>
-              <span className={styles.availableBadge}>● {product.availability}</span>
-            </div>
-
-            <div className={styles.pricingActionFooter}>
-              <div>
-                <div className={styles.priceLabelMeta}>Price From</div>
-                <div className={styles.priceNumericalValue}>{product.price}</div>
+              <div className={styles.bottomImageCaption}>
+                <div className={styles.captionTitleText}>
+                  {product.name}
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </motion.div>
+
+            <motion.div
+              className={styles.detailsContentPanel}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.55 }}
+            >
+              <div className={styles.detailsHeaderMeta}>
+                <span
+                  className={styles.productTag}
+                  style={{
+                    color: product.tagColor,
+                    borderColor: `${product.tagColor}33`,
+                  }}
+                >
+                  {product.tag}
+                </span>
+
+                <span className={styles.brandContextText}>
+                  · Love In
+                </span>
+              </div>
+
+              <h3 className={styles.productNameTitle}>
+                {product.name}
+              </h3>
+
+              <p className={styles.productDescriptionText}>
+                {product.desc}
+              </p>
+
+              <div className={styles.ratingRowMeta}>
+                <span className={styles.starIconChar}>★</span>
+                <span className={styles.ratingValueText}>
+                  {product.rating}
+                </span>
+              </div>
+
+              <div className={styles.metaRow}>
+                <span className={styles.categoryBadge}>
+                  {product.category}
+                </span>
+
+                <span className={styles.availableBadge}>
+                  ● {product.availability}
+                </span>
+              </div>
+
+              <div className={styles.pricingActionFooter}>
+                <div>
+                  <div className={styles.priceLabelMeta}>
+                    Price From
+                  </div>
+
+                  <div className={styles.priceNumericalValue}>
+                    {product.price}
+                  </div>
+                </div>
+              </div>
+
+            </motion.div>
+
+          </motion.div>
+
+        </AnimatePresence>
+
       </div>
-    </section>
+    </motion.section>
   );
 }
 

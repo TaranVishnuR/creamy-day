@@ -2,7 +2,7 @@
 
 .heroContainer {
   min-height: calc(100vh - 80px);
-  background: #FFBCCD;
+  background: #2A1F1A;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -20,51 +20,6 @@
   gap: 60px;
   align-items: center;
   z-index: 2;
-}
-
-/* ================= BLOBS ================= */
-
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.blobTopRight {
-  top: -120px;
-  right: -80px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 111, 97, 0.12) 0%,
-    transparent 70%
-  );
-}
-
-.blobBottomLeft {
-  bottom: -100px;
-  left: -60px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(245, 166, 35, 0.1) 0%,
-    transparent 70%
-  );
-}
-
-.blobCenter {
-  top: 30%;
-  left: 40%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 111, 97, 0.06) 0%,
-    transparent 70%
-  );
 }
 
 /* ================= LEFT SECTION ================= */
@@ -87,8 +42,8 @@
   gap: 10px;
   padding: 8px 20px;
   border-radius: 999px;
-  background: rgba(255, 111, 97, 0.1);
-  border: 1px solid rgba(255, 111, 97, 0.25);
+  background: rgba(240,165,0,0.08);
+  border: 1px solid rgba(240,165,0,0.18);
   margin-bottom: 18px;
 }
 
@@ -96,20 +51,20 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ff6f61;
+  background: #F0A500;
 }
 
 .badgeTextBold {
   size: 12px;
   font-weight: 700;
-  color: #ff6f61;
+  color: #F0A500;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .badgeTextLight {
   font-size: 12px;
-  color: #2d1f1f;
+  color: #FFD166;
   opacity: 0.6;
 }
 
@@ -119,10 +74,12 @@
   font-family: serif;
   font-weight: 900;
   font-size: clamp(48px, 4vw, 68px);
-  color: #2d1f1f;
+  color: #FFF8EC;
   line-height: 0.95;
   letter-spacing: -2px;
   margin-bottom: 18px;
+  text-shadow:
+    0 2px 20px rgba(240,165,0,0.08);
 }
 
 .heroTitleItalic {
@@ -132,8 +89,8 @@
 .heroDescription {
   font-size: 18px;
   line-height: 1.7;
-  color: #2d1f1f;
-  opacity: 0.8;
+  color: #FFF8EC;
+  opacity: 0.75;
   max-width: 500px;
   margin-bottom: 30px;
 }
@@ -157,27 +114,31 @@
 
 .btnOutline {
   background: transparent;
-  border: 1.5px solid #ff6f61;
-  color: #ff6f61;
+  border: 2px solid #F0A500;
+  color: #F0A500;
 }
 
 .btnOutline:hover {
-  background: #ff6f61;
-  color: white;
+  background: #F0A500;
+  color: #2A1F1A;
   transform: translateY(-2px);
 }
 
 .btnSolid {
-  background: #2d1f1f;
+  background: #F0A500;
   border: none;
-  color: white;
-  box-shadow: 0 8px 20px rgba(45, 31, 31, 0.2);
+  color: #2A1F1A;
+
+  box-shadow:
+    0 10px 25px rgba(240,165,0,0.18);
+
+  transition: all 0.3s ease;
 }
 
 .btnSolid:hover {
+  background: #FFD166;
   transform: translateY(-2px);
 }
-
 /* ================= STATS ================= */
 
 .statsContainer {
@@ -185,7 +146,7 @@
   gap: 40px;
   margin-top: 40px;
   padding-top: 24px;
-  border-top: 1px solid rgba(45, 31, 31, 0.1);
+  border-top: 1px solid rgba(255,209,102,0.12);
 }
 
 .statItem {
@@ -195,13 +156,13 @@
 .statValue {
   font-size: 28px;
   font-weight: 800;
-  color: #ff6f61;
+  color: #F0A500;
 }
 
 .statLabel {
   font-size: 13px;
-  color: #2d1f1f;
-  opacity: 0.7;
+  color: #FFF8EC;
+  opacity: 0.65;
 }
 
 /* ================= IMAGE ================= */
@@ -226,12 +187,16 @@
   width: 100%;
   max-width: 440px;
   height: 560px;
-  background: #f5a623;
+  background: linear-gradient(
+  135deg,
+  #F0A500,
+  #FFD166
+);
   border-radius: 40px;
   overflow: hidden;
   box-shadow:
-    0 40px 100px rgba(45, 31, 31, 0.15),
-    0 12px 32px rgba(255, 111, 97, 0.15);
+  0 40px 100px rgba(0,0,0,0.45),
+  0 0 60px rgba(240,165,0,0.15);
 }
 
 .heroImage {
@@ -260,22 +225,30 @@
 }
 
 .imageCaptionBox {
-  background: rgba(255, 244, 232, 0.95);
+  background: rgba(42,31,26,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 16px 20px;
   border-radius: 18px;
 }
 
+.imageCard {
+  transition: transform 0.4s ease;
+}
+
+.imageCard:hover {
+  transform: translateY(-8px);
+}
+
 .captionTitle {
   font-size: 20px;
   font-weight: 700;
-  color: #2d1f1f;
+  color: #FFF8EC;
 }
 
 .captionSubtitle {
   font-size: 13px;
-  color: #ff6f61;
+  color: #FFD166;
   margin-top: 4px;
 }
 
@@ -347,9 +320,5 @@
 
   .heroRight {
     display: none !important;
-  }
-
-  .blob {
-    display: none;
   }
 }
